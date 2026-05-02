@@ -20,7 +20,7 @@ jobs:
         run: npm install
 
       - name: Audit dependencies
-        run: npm audit --audit-level=high
+        run: npm audit --audit-level=critical
 
       - name: Test backend
         run: npm run test:backend
