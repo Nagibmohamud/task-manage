@@ -9,6 +9,8 @@ services:
       - "3000:80"
 
   backend:
+    #Backend restarts if it crashes
+    #Used because database isn't ready before backend which caused backend to crash.
     restart: always
     depends_on:
       - database
