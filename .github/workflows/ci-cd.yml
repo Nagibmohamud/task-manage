@@ -19,25 +19,30 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      #Audit
       - name: Audit dependencies
         run: npm audit --audit-level=high
 
+      #Testing
       - name: Test backend
         run: npm run test:backend
 
       - name: Test frontend
         run: npm run test:frontend
 
+      #Linting
       - name: Lint backend
         run: npm run lint:backend
 
       - name: Lint frontend
         run: npm run lint:frontend
 
+  #CD-Workflow
   Deploy:
     runs-on: ubuntu-latest
     needs: CI-workflow
 
+    # Only deploys when a new tag is pushed
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Backend Deployment
